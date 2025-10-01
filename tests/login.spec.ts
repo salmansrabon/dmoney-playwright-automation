@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { getLastUser, User } from '../utils/utils';
+import { getLastUser } from '../utils/utils';
 import { LoginPage } from '../pages/login.pom';
+import { Person } from '../models/Person.model';
 
 
 test("Login by admin", async ({page}) => {
@@ -9,7 +10,7 @@ test("Login by admin", async ({page}) => {
 });
 
 test("Login by user", async({page}) => {
-    const lastUser: User = getLastUser('./resources/users.json');
+    const lastUser: Person = getLastUser('./resources/users.json');
     const loginPage = new LoginPage(page);
     await loginPage.login(lastUser.phoneNumber, lastUser.password);
 })

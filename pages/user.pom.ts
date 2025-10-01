@@ -1,4 +1,5 @@
 import { Page } from '@playwright/test';
+import {Person} from '../models/Person.model';
 
 export class UserPage {
   constructor(private page: Page) {}
@@ -41,21 +42,14 @@ export class UserPage {
     await this.page.getByRole('textbox', { name: 'Search' }).fill(searchText);
   }
 
-  async createUser(userData: {
-    fullName: string;
-    email: string;
-    password: string;
-    phoneNumber: string;
-    nid: string;
-    role?: string;
-  }) {
+  async createUser(person: Person) {
     await this.clickCreateUserMenu();
-    await this.fillName(userData.fullName);
-    await this.fillEmail(userData.email);
-    await this.fillPassword(userData.password);
-    await this.fillPhoneNumber(userData.phoneNumber);
-    await this.fillNID(userData.nid);
-    await this.selectRole(userData.role || 'Customer');
+    await this.fillName(person.fullName);
+    await this.fillEmail(person.email);
+    await this.fillPassword(person.password);
+    await this.fillPhoneNumber(person.phoneNumber);
+    await this.fillNID(person.nid);
+    await this.selectRole(person.role || 'Customer');
     await this.clickCreateUserButton();
   }
 }
