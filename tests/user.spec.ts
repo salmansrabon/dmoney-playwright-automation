@@ -1,9 +1,11 @@
 import { test, expect, Page } from '@playwright/test';
 import { generateRadnomNumber, saveJsonData } from '../utils/utils';
 import { faker } from '@faker-js/faker';
+import { LoginPage } from '../pages/login.pom';
+import { UserPage } from '../pages/user.pom';
 
 
-test.describe.serial("Login Tests", () => {
+test.describe.serial("User Tests", () => {
     let page: Page;
 
     test.beforeAll(async ({ browser }) => {
@@ -15,11 +17,8 @@ test.describe.serial("Login Tests", () => {
     });
 
     test.beforeAll(async () => {
-        await page.goto("/");
-        await page.getByRole('textbox', { name: "Email or Phone Number" }).fill("01686606909");
-        await page.getByRole('textbox', { name: "Password" }).fill("1234");
-        await page.getByRole('button', { name: "LOGIN" }).click();
-        await page.waitForLoadState('networkidle');
+        const loginPage = new LoginPage(page);
+        await loginPage.login("01686606909", "1234");
     });
 
     test("Create new user", async () => {
@@ -28,28 +27,20 @@ test.describe.serial("Login Tests", () => {
             email:string,
             password:string,
             phoneNumber:string,
-            nid:string,
-            role:string
+            nid:string
         }
         const person:Person={
             fullName:faker.person.fullName(),
             email:`salmansrabon+${generateRadnomNumber(1000,9999)}@gmail.com`,
             password:"1234",
             phoneNumber:"0130"+generateRadnomNumber(1000000,9999999),
-            nid:generateRadnomNumber(100000000,999999999).toString(),
-            role:'Agent'
+            nid:generateRadnomNumber(100000000,999999999).toString()
         }
-        const menuElem = await page.locator("//span[contains(text(),'Create User')]");
-        await menuElem.nth(0).click();
-        await page.getByRole('textbox',{name:"Name"}).fill(person.fullName);
-        await page.getByRole('textbox',{name:"Email"}).fill(person.email);
-        await page.getByRole('textbox',{name:"Password"}).fill(person.password);
-        await page.getByRole('textbox',{name:"Phone Number"}).fill(person.phoneNumber);
-        await page.getByRole('textbox',{name:"NID"}).fill(person.nid)
-        await page.getByRole('combobox', { exact:true }).click();
-        await page.getByRole('option', { name: `${person.role}` }).click();
-        await page.getByRole('button', { name: 'Create User' }).click();
-        await page.getByRole('textbox',{name:'Search'}).fill(person.email);
+        
+        const userPage = new UserPage(page);
+        await userPage.createUser(person);
+        await userPage.searchUser(person.email);
+        
         await expect(page.getByRole('main')).toContainText('Total: 1');
         saveJsonData(person, './resources/users.json');
     });

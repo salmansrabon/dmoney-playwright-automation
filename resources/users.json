@@ -19,7 +19,7 @@
     "password": "1234",
     "phoneNumber": "01306525146",
     "nid": "490861870",
-    "role":"Customer"
+    "role": "Customer"
   },
   {
     "fullName": "Nettie Koch",
@@ -28,5 +28,12 @@
     "phoneNumber": "01307680802",
     "nid": "416774037",
     "role": "Agent"
+  },
+  {
+    "fullName": "Roxanne Morissette PhD",
+    "email": "salmansrabon+7706@gmail.com",
+    "password": "1234",
+    "phoneNumber": "01308153628",
+    "nid": "439569815"
   }
 ]
