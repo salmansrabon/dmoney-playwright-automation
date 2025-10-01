@@ -47,6 +47,6 @@ test.describe.serial("Login Tests", () => {
         await page.getByRole('combobox', { exact:true }).click();
         await page.getByRole('option', { name: 'Customer' }).click();
         await page.getByRole('button', { name: 'Create User' }).click();
-        await page.pause();
+        //await page.pause();
     });
 });
