@@ -1,0 +1,17 @@
+{
+  "name": "dmoney-automation-playwright",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^24.6.1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
+}
