@@ -2,7 +2,6 @@
   "name": "dmoney-automation-playwright",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -11,6 +10,14 @@
     "@playwright/test": "^1.55.1",
     "@types/node": "^24.6.1"
   },
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "codegen": "npx playwright codegen",
+    "test:report": "npx playwright show-report",
+    "install:drivers": "npx playwright install"
+  },  
   "dependencies": {
     "@faker-js/faker": "^10.0.0",
     "dotenv": "^17.2.3"

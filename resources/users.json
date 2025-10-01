@@ -1,0 +1,32 @@
+[
+  {
+    "fullName": "Nick Rath",
+    "email": "salmansrabon+7397@gmail.com",
+    "password": "1234",
+    "phoneNumber": "01303727868",
+    "nid": "946287265"
+  },
+  {
+    "fullName": "Jean Mayer",
+    "email": "salmansrabon+9438@gmail.com",
+    "password": "1234",
+    "phoneNumber": "01305465742",
+    "nid": "965071036"
+  },
+  {
+    "fullName": "Julian Weissnat",
+    "email": "salmansrabon+4256@gmail.com",
+    "password": "1234",
+    "phoneNumber": "01306525146",
+    "nid": "490861870",
+    "role":"Customer"
+  },
+  {
+    "fullName": "Nettie Koch",
+    "email": "salmansrabon+9299@gmail.com",
+    "password": "1234",
+    "phoneNumber": "01307680802",
+    "nid": "416774037",
+    "role": "Agent"
+  }
+]
