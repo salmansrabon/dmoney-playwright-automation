@@ -35,5 +35,27 @@
     "password": "1234",
     "phoneNumber": "01308153628",
     "nid": "439569815"
+  },
+  {
+    "fullName": "Miss Dianne Cartwright",
+    "email": "salmansrabon+2638@gmail.com",
+    "password": "1234",
+    "phoneNumber": "01305283321",
+    "nid": "787332965"
+  },
+  {
+    "fullName": "Rufus Kerluke",
+    "email": "salmansrabon+5378@gmail.com",
+    "password": "1234",
+    "phoneNumber": "01305272718",
+    "nid": "107048419"
+  },
+  {
+    "fullName": "Tanya Koelpin",
+    "email": "salmansrabon+5205@gmail.com",
+    "password": "1234",
+    "phoneNumber": "01306211211",
+    "nid": "339725719",
+    "role": "Agent"
   }
 ]
