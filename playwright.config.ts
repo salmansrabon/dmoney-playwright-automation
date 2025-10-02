@@ -13,6 +13,7 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
  */
 export default defineConfig({
   testDir: './tests',
+  outputDir:'test-results/',
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -22,16 +23,28 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+  ['html', { outputFolder: 'playwright-report', open: 'never' }],
+  ['json', { outputFile: './playwright-report/report.json' }]
+],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  timeout:60000, //if not declared, default 30s; applies for each individual test
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    //baseURL: 'http://localhost:3006',
-    baseURL: 'https://dmoneyportal.roadtocareer.net',
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
+    
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    viewport: { width: 1280, height: 720 },
+    video:'on-first-retry',
+    screenshot:'only-on-failure',
+    viewport: { width: 1280, height: 720 }, // if not declared by default { width: 1280, height: 720 }
+    actionTimeout:5000,
+    navigationTimeout:15000,
+    launchOptions:{
+      slowMo:1000,
+      headless:false
+    }
   },
 
   /* Configure projects for major browsers */
